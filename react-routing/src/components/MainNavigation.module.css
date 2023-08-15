@@ -1,0 +1,26 @@
+.header {
+  max-width: 60rem;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+}
+
+.list a {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: goldenrod;
+}
+
+.list a:hover,
+.list a.active {
+  color: plum;
+  text-decoration: underline;
+}
