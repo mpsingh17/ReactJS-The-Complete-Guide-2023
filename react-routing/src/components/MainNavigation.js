@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
@@ -7,19 +7,43 @@ const MainNavigation = () => {
       <nav>
         <ul className={classes.list}>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              to="/"
+              end={true}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <NavLink
+              to="/products"
+              end={true}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Products
+            </NavLink>
           </li>
 
           {/*
-            This Link component is simulating a 404 error.
+            This NavLink component is simulating a 404 error.
             No component available for /products/dd
-            The ErrorPage component should load for this link.
+            The ErrorPage component should load for this NavLink.
           */}
           <li>
-            <Link to="/products/dd">Not Available</Link>
+            <NavLink
+              to="/products/dd"
+              end={true}
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Not Available
+            </NavLink>
           </li>
         </ul>
       </nav>
