@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   // Call useNavigate hook from react router dom to get a function reference.
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   /**
    * Use the function reference from useNavigate hook call to programatically navigate the user.
