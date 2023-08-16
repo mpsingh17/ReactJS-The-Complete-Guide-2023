@@ -8,7 +8,9 @@ const ProductDetailsPage = () => {
       <h1>Product Details</h1>
       <p>Your selected product with ID = {params.productId}</p>
       <p>
-        <Link to="/products">Back to All Products</Link>
+        <Link to=".." relative="path">
+          Back to All Products
+        </Link>
       </p>
     </>
   );
