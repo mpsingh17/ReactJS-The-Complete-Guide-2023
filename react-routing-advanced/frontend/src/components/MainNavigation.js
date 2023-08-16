@@ -30,7 +30,7 @@ function MainNavigation() {
           </li>
           <li>
             <NavLink
-              to="events/new"
+              to="/events/new"
               end
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
