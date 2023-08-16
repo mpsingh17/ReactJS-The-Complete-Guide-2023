@@ -20,4 +20,4 @@
 - Every list item should include a link to the respective EventDetailPage
 ## 7. Output the ID of the selected event on the EventDetailPage
 
-### BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
+## 8. BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
