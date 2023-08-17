@@ -20,9 +20,12 @@ export const eventsLoader = async () => {
 
   if (!response.ok) {
     /**
-     * If response is not ok then throw an error. The error will be handled by the React Router.
+     * If response is not ok then throw an error using Response.
+     * The error will be handled by the React Router error element.
      */
-    throw new Error();
+    throw new Response(null, {
+      status: 500,
+    });
   } else {
     /**
      * Instead of extracting data from the response, React Router allows us to return the
