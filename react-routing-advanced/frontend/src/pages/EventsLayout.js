@@ -4,7 +4,7 @@ import EventsNavigation from "../components/EventsNavigation";
 const EventsLayout = () => {
   return (
     <>
-      <h1>Events Layout</h1>
+      <h1 style={{ textAlign: "center" }}>Events Layout</h1>
       <EventsNavigation />
       <main>
         <Outlet />
