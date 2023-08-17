@@ -1,12 +1,8 @@
 import EventsList from "../components/EventsList";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, json } from "react-router-dom";
 
 const EventsPage = () => {
   const data = useLoaderData();
-
-  if (data.isError) {
-    return <p>{data.message}</p>;
-  }
 
   const events = data.events;
 
@@ -23,9 +19,14 @@ export const eventsLoader = async () => {
      * If response is not ok then throw an error using Response.
      * The error will be handled by the React Router error element.
      */
-    throw new Response(null, {
-      status: 500,
-    });
+    // throw new Response(null, {
+    //   status: 500,
+    // });
+
+    /**
+     * instead of throw new response use the json function from react router dom.
+     */
+    throw json({ isError: true }, { status: 500 });
   } else {
     /**
      * Instead of extracting data from the response, React Router allows us to return the
