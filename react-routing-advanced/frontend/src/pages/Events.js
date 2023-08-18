@@ -12,7 +12,7 @@ const EventsPage = () => {
 export default EventsPage;
 
 export const eventsLoader = async () => {
-  const response = await fetch("http://localhost:8080/eventss");
+  const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
     /**
