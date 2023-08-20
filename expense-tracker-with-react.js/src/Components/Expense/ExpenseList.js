@@ -19,11 +19,12 @@ const ExpenseList = (props) => {
         getSelectedYear={getSelectedYearHandler}
       />
 
-      {props.expenses.map((event) => (
+      {props.expenses.map((expense) => (
         <ExpenseItem
-          title={event.title}
-          amount={event.amount}
-          date={event.date}
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
         />
       ))}
     </Card>
