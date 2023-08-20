@@ -1,5 +1,5 @@
 import "./App.css";
-import ExpenseList from "./Components/Expense/Expenses";
+import Expenses from "./Components/Expense/Expenses";
 import NewExpense from "./Components/NewExpense/NewExpense";
 import { useState } from "react";
 
@@ -22,6 +22,12 @@ const DUMMY_EXPENSES = [
     amount: 110.75,
     date: new Date(2022, 9, 12),
   },
+  {
+    id: "e4",
+    title: "Book",
+    amount: 14.99,
+    date: new Date(2020, 17, 10),
+  },
 ];
 
 const App = () => {
@@ -39,7 +45,7 @@ const App = () => {
   return (
     <div>
       <NewExpense onAddExpense={AddExpenseDataHandler} />
-      <ExpenseList expenses={expenses} />
+      <Expenses expenses={expenses} />
     </div>
   );
 };
