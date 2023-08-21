@@ -27,14 +27,13 @@ const NewExpense = (props) => {
 
   return (
     <div className="new-expense">
-      {formVisiblity ? (
+      {formVisiblity && (
         <ExpenseForm
           onExpenseFormSubmit={onExpenseFormSubmitHandler}
           hideForm={hideForm}
         />
-      ) : (
-        <AddNewExpenseBtn showForm={showForm} />
       )}
+      {!formVisiblity && <AddNewExpenseBtn showForm={showForm} />}
     </div>
   );
 };
