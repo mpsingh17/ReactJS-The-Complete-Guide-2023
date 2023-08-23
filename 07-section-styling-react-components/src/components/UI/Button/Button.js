@@ -1,5 +1,7 @@
-import styled from "styled-components";
+import classes from "./Button.module.css";
 
+/** The code below uses styled-component package to style the Button component.
+import styled from "styled-components";
 const Button = styled.button`
   width: 100%;
   font: inherit;
@@ -25,13 +27,18 @@ const Button = styled.button`
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.26);
   }
 `;
+*/
 
-// const Button = props => {
-//   return (
-//     <button type={props.type} className="button" onClick={props.onClick}>
-//       {props.children}
-//     </button>
-//   );
-// };
+const Button = (props) => {
+  return (
+    <button
+      type={props.type}
+      className={classes.button}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </button>
+  );
+};
 
 export default Button;
