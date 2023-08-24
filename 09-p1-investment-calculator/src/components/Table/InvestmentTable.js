@@ -1,6 +1,6 @@
 import TableRow from "./TableRow";
 
-const InvestmentTable = () => {
+const InvestmentTable = (props) => {
   return (
     <table className="result">
       <thead>
@@ -13,7 +13,9 @@ const InvestmentTable = () => {
         </tr>
       </thead>
       <tbody>
-        <TableRow />
+        {props.investmentData.map((rowData) => (
+          <TableRow key={rowData.year} rowData={rowData} />
+        ))}
       </tbody>
     </table>
   );

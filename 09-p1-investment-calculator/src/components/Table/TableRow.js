@@ -1,11 +1,11 @@
-const TableRow = () => {
+const TableRow = (props) => {
   return (
     <tr>
-      <td>YEAR NUMBER</td>
-      <td>TOTAL SAVINGS END OF YEAR</td>
-      <td>INTEREST GAINED IN YEAR</td>
-      <td>TOTAL INTEREST GAINED</td>
-      <td>TOTAL INVESTED CAPITAL</td>
+      <td>{props.rowData.year}</td>
+      <td>{props.rowData.currentSavings}</td>
+      <td>{props.rowData.yearlyInterest}</td>
+      <td>{props.rowData.totalYearlyInterest}</td>
+      <td>{props.rowData.investedCapital}</td>
     </tr>
   );
 };
