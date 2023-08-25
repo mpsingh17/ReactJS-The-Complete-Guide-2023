@@ -3,10 +3,23 @@ import classes from "./InvestmentForm.module.css";
 import { useState } from "react";
 
 const InvestmentForm = (props) => {
-  const [currentSavings, setCurrentSavings] = useState(100);
-  const [yearlyContribution, setYearlyContribution] = useState(4);
-  const [expectedReturn, setExpectedReturn] = useState(2);
-  const [duration, setDuration] = useState(12);
+  const [currentSavings, setCurrentSavings] = useState();
+  const [yearlyContribution, setYearlyContribution] = useState();
+  const [expectedReturn, setExpectedReturn] = useState();
+  const [duration, setDuration] = useState();
+  const [isFormValid, setIsFormValid] = useState(true);
+
+  //---------------- Helper functions --------------------//
+  const checkUserInputValidity = (userInput) => {
+    for (const key in userInput) {
+      if (userInput[key] === undefined || userInput[key] === null) {
+        setIsFormValid(false);
+        break;
+      }
+      setIsFormValid(true);
+      console.log(userInput);
+    }
+  };
 
   //---------------- Event handlers -----------------------//
   const onCurrentSavingsChangeHandler = (event) => {
@@ -41,6 +54,8 @@ const InvestmentForm = (props) => {
       expectedReturn: expectedReturn,
       duration: duration,
     };
+
+    checkUserInputValidity(userInput);
 
     props.calculateHandler(userInput);
   };
@@ -92,6 +107,11 @@ const InvestmentForm = (props) => {
           Calculate
         </button>
       </p>
+      {!isFormValid && (
+        <p style={{ textAlign: "center", color: "red" }}>
+          All input fields are required.
+        </p>
+      )}
     </form>
   );
 };
