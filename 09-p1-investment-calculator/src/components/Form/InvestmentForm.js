@@ -1,4 +1,5 @@
 import InputControl from "./InputControl";
+import classes from "./InvestmentForm.module.css";
 import { useState } from "react";
 
 const InvestmentForm = (props) => {
@@ -38,8 +39,8 @@ const InvestmentForm = (props) => {
   };
 
   return (
-    <form className="form" onSubmit={onFormSubmitHandler}>
-      <div className="input-group">
+    <form className={classes["form"]} onSubmit={onFormSubmitHandler}>
+      <div className={classes["input-group"]}>
         <InputControl
           htmlFor="current-savings"
           labelText="Current Savings ($)"
@@ -55,7 +56,7 @@ const InvestmentForm = (props) => {
           onChange={onYearlyContributionChangeHandler}
         />
       </div>
-      <div className="input-group">
+      <div className={classes["input-group"]}>
         <InputControl
           htmlFor="expected-return"
           labelText="Expected Return (%, per year)"
@@ -72,11 +73,11 @@ const InvestmentForm = (props) => {
           onChange={onDurationChangeHandler}
         />
       </div>
-      <p className="actions">
-        <button type="reset" className="buttonAlt">
+      <p className={classes["actions"]}>
+        <button type="reset" className={classes["buttonAlt"]}>
           Reset
         </button>
-        <button type="submit" className="button">
+        <button type="submit" className={classes["button"]}>
           Calculate
         </button>
       </p>
