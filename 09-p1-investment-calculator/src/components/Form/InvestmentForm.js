@@ -25,6 +25,13 @@ const InvestmentForm = (props) => {
     setDuration(event.target.value);
   };
 
+  const onResetBtnClick = () => {
+    setCurrentSavings(null);
+    setYearlyContribution(null);
+    setExpectedReturn(null);
+    setDuration(null);
+  };
+
   const onFormSubmitHandler = (event) => {
     event.preventDefault();
 
@@ -74,7 +81,11 @@ const InvestmentForm = (props) => {
         />
       </div>
       <p className={classes["actions"]}>
-        <button type="reset" className={classes["buttonAlt"]}>
+        <button
+          type="reset"
+          className={classes["buttonAlt"]}
+          onClick={onResetBtnClick}
+        >
           Reset
         </button>
         <button type="submit" className={classes["button"]}>
