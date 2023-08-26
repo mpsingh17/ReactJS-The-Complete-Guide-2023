@@ -1,6 +1,6 @@
-import logo from "./assets/investment-calculator-logo.png";
 import InvestmentForm from "./components/Form/InvestmentForm";
 import InvestmentTable from "./components/Table/InvestmentTable";
+import Header from "./components/Header/Header";
 import classes from "./app.module.css";
 import { useState } from "react";
 
@@ -52,11 +52,7 @@ function App() {
 
   return (
     <div>
-      <header className={classes["header"]}>
-        <img src={logo} alt="logo" />
-        <h1>Investment Calculator</h1>
-      </header>
-
+      <Header />
       <InvestmentForm calculateHandler={calculateHandler} />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
@@ -65,7 +61,7 @@ function App() {
       {investmentData.length > 0 ? (
         <InvestmentTable investmentData={investmentData} />
       ) : (
-        <p className={classes["header"]}>No data available</p>
+        <p className={classes["text-center"]}>No data available</p>
       )}
     </div>
   );
