@@ -6,7 +6,7 @@ const InputControl = (props) => {
         type={props.inputType}
         id={props.inputId}
         value={props.value}
-        onChange={props.onChange}
+        onChange={(event) => props.onChange(props.inputId, event.target.value)}
       />
     </p>
   );
