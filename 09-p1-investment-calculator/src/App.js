@@ -15,17 +15,17 @@ function App() {
   };
 
   const calculateHandler = (userInput) => {
-    // Should be triggered when form is submitted
-    // You might not directly want to bind it to the submit event on the form though...
+    // console.log(userInput);
 
-    const yearlyData = []; // per-year results
+    const yearlyData = [];
 
-    let currentSavings = +userInput.currentSavings; // feel free to change the shape of this input object!
+    let currentSavings = +userInput["current-savings"];
     let totalYearlyInterest = 0;
     let investedCapital = 0;
-    const yearlyContribution = +userInput.yearlyContribution; // as mentioned: feel free to change the shape...
-    const expectedReturn = (+userInput.expectedReturn / 100).toFixed(2);
-    const duration = +userInput.duration;
+
+    const duration = +userInput["duration-in-years"];
+    const yearlyContribution = +userInput["yearly-contribution"];
+    const expectedReturn = (+userInput["expected-return"] / 100).toFixed(2);
 
     // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
@@ -36,7 +36,6 @@ function App() {
       investedCapital = currentSavings - totalYearlyInterest;
 
       yearlyData.push({
-        // feel free to change the shape of the data pushed to the array!
         year: i + 1,
         yearlyInterest: convertToMoneyFormat(yearlyInterest),
         totalYearlyInterest: convertToMoneyFormat(totalYearlyInterest),

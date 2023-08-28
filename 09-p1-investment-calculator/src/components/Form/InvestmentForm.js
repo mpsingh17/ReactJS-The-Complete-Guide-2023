@@ -82,7 +82,7 @@ const InvestmentForm = (props) => {
         break;
       }
       setIsFormValid(true);
-      console.log(userInput);
+      // console.log(userInput);
     }
   };
 
