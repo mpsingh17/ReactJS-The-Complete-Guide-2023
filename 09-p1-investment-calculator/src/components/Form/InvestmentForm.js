@@ -12,62 +12,24 @@ const initialUserInput = {
 const InvestmentForm = (props) => {
   const [userInput, setUserInput] = useState(initialUserInput);
 
-  // const [currentSavings, setCurrentSavings] = useState();
-  // const [yearlyContribution, setYearlyContribution] = useState();
-  // const [expectedReturn, setExpectedReturn] = useState();
-  // const [duration, setDuration] = useState();
   const [isFormValid, setIsFormValid] = useState(true);
 
   //---------------- Event handlers -----------------------//
-  const onCurrentSavingsChangeHandler = (event) => {
+  const inputChangeHandler = (input, value) => {
     setUserInput((prevState) => {
       return {
         ...prevState,
-        "current-savings": event.target.value,
-      };
-    });
-  };
-
-  const onYearlyContributionChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return {
-        ...prevState,
-        "yearly-contribution": event.target.value,
-      };
-    });
-  };
-
-  const onExpectedReturnChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return {
-        ...prevState,
-        "expected-return": event.target.value,
-      };
-    });
-  };
-
-  const onDurationChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return {
-        ...prevState,
-        "duration-in-years": event.target.value,
+        [input]: value,
       };
     });
   };
 
   const onResetBtnClick = () => {
-    setUserInput(userInput);
+    setUserInput(initialUserInput);
   };
 
   const onFormSubmitHandler = (event) => {
     event.preventDefault();
-
-    // const userInput = {
-    //   currentSavings: currentSavings,
-    //   yearlyContribution: yearlyContribution,
-    //   expectedReturn: expectedReturn,
-    //   duration: duration,
-    // };
 
     checkUserInputValidity(userInput);
 
@@ -95,7 +57,7 @@ const InvestmentForm = (props) => {
           inputType="number"
           inputId="current-savings"
           value={userInput["current-savings"]}
-          onChange={onCurrentSavingsChangeHandler}
+          onChange={inputChangeHandler}
         />
         <InputControl
           htmlFor="yearly-contribution"
@@ -103,7 +65,7 @@ const InvestmentForm = (props) => {
           inputType="number"
           inputId="yearly-contribution"
           value={userInput["yearly-contribution"]}
-          onChange={onYearlyContributionChangeHandler}
+          onChange={inputChangeHandler}
         />
       </div>
       <div className={classes["input-group"]}>
@@ -113,16 +75,16 @@ const InvestmentForm = (props) => {
           inputType="number"
           inputId="expected-return"
           value={userInput["expected-return"]}
-          onChange={onExpectedReturnChangeHandler}
+          onChange={inputChangeHandler}
         />
 
         <InputControl
           htmlFor="duration"
           labelText="Investment Duration (years)"
           inputType="number"
-          inputId="duration"
+          inputId="duration-in-years"
           value={userInput["duration-in-years"]}
-          onChange={onDurationChangeHandler}
+          onChange={inputChangeHandler}
         />
       </div>
       <p className={classes["actions"]}>
