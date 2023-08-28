@@ -5,7 +5,7 @@ import classes from "./app.module.css";
 import { useState } from "react";
 
 function App() {
-  const [investmentData, setInvestmentData] = useState([]);
+  const [investmentData, setInvestmentData] = useState(null);
 
   const convertToMoneyFormat = (moneyValue) => {
     return moneyValue.toLocaleString("en-NZ", {
@@ -57,11 +57,10 @@ function App() {
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      {investmentData.length > 0 ? (
-        <InvestmentTable investmentData={investmentData} />
-      ) : (
+      {!investmentData && (
         <p className={classes["text-center"]}>No data available</p>
       )}
+      {investmentData && <InvestmentTable investmentData={investmentData} />}
     </div>
   );
 }
