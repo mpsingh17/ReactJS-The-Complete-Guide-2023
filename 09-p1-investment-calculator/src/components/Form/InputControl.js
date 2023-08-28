@@ -5,6 +5,7 @@ const InputControl = (props) => {
       <input
         type={props.inputType}
         id={props.inputId}
+        value={props.value}
         onChange={props.onChange}
       />
     </p>
