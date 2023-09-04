@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "../UI/Modal/Modal";
 
 const initialUser = {
   id: Math.random(),
@@ -38,6 +39,11 @@ const AddUser = (props) => {
   const [userDetails, setUserDetails] = useState(initialUser);
   const [isValidForm, setIsValidForm] = useState(true);
   const [formErrors, setFormErrors] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const onModalCloseHandler = () => {
+    setShowModal(false);
+  };
 
   const onInputChangeHandler = (inputId, value) => {
     setUserDetails((prevState) => {
@@ -55,6 +61,7 @@ const AddUser = (props) => {
     if (!result.isValid) {
       setIsValidForm(false);
       setFormErrors(result.errors);
+      setShowModal(true);
     } else {
       setUserDetails(initialUser);
       props.onAddUserHandler(event, userDetails);
@@ -88,7 +95,14 @@ const AddUser = (props) => {
           <button type="submit">Add User</button>
         </div>
 
-        {!isValidForm && formErrors.map((error) => <p>{error}</p>)}
+        {/* {!isValidForm && formErrors.map((error) => <p>{error}</p>)} */}
+        {!isValidForm && (
+          <Modal
+            items={formErrors}
+            showModal={showModal}
+            onModalCloseHandler={onModalCloseHandler}
+          />
+        )}
       </form>
     </>
   );
