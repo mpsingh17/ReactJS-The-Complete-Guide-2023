@@ -6,8 +6,38 @@ const initialUser = {
   userAge: "",
 };
 
+const validateFormInputs = (userDetails) => {
+  const formValidationResult = {
+    isValid: true,
+    errors: [],
+  };
+
+  if (
+    userDetails.userName === null ||
+    userDetails.userName === undefined ||
+    userDetails.userName === ""
+  ) {
+    formValidationResult.isValid = false;
+    formValidationResult.errors.push("User name is required.");
+  }
+
+  if (userDetails.userAge === null || userDetails.userAge === undefined) {
+    formValidationResult.isValid = false;
+    formValidationResult.errors.push("User age is required.");
+  }
+
+  if (+userDetails.userAge <= 0) {
+    formValidationResult.isValid = false;
+    formValidationResult.errors.push("User age must be greater than 0.");
+  }
+
+  return formValidationResult;
+};
+
 const AddUser = (props) => {
   const [userDetails, setUserDetails] = useState(initialUser);
+  const [isValidForm, setIsValidForm] = useState(true);
+  const [formErrors, setFormErrors] = useState([]);
 
   const onInputChangeHandler = (inputId, value) => {
     setUserDetails((prevState) => {
@@ -19,8 +49,16 @@ const AddUser = (props) => {
   };
 
   const onSubmitHandler = (event) => {
-    setUserDetails(initialUser);
-    props.onAddUserHandler(event, userDetails);
+    event.preventDefault();
+    const result = validateFormInputs(userDetails);
+
+    if (!result.isValid) {
+      setIsValidForm(false);
+      setFormErrors(result.errors);
+    } else {
+      setUserDetails(initialUser);
+      props.onAddUserHandler(event, userDetails);
+    }
   };
 
   return (
@@ -49,6 +87,8 @@ const AddUser = (props) => {
         <div>
           <button type="submit">Add User</button>
         </div>
+
+        {!isValidForm && formErrors.map((error) => <p>{error}</p>)}
       </form>
     </>
   );
